@@ -6,12 +6,18 @@ var app = express()
 var Data = require("./noteSchema")
 
 //connect mongoose to mongoDB
-mongoose.connect("mongoDB://localhost/newDB")
+mongoose.connect("mongodb://localhost:27017/newDB")
 
 mongoose.connection.once("open", () => {
-    console.log("Connect to database")
+    console.log("Connected to database!")
 }).on("error", (error) => {
 console.log("Failed to connect " + error)
+})
+
+//http://192.168.0.10:8081/create
+
+var server = app.listen(8081, "10.167.91.39", () => {
+    console.log("Server is running!")
 })
 
 //CREATE A NOTE
@@ -21,7 +27,7 @@ app.post("/create", (req, res) => {
 
         note: req.get("note"),
         title: req.get("title"),
-        date: req.get("date"),
+        date: req.get("date")
     })
 
     note.save().then(() => {
@@ -34,13 +40,7 @@ app.post("/create", (req, res) => {
     })
 })
 
-//http://192.168.0.10:8081/create
 
-var server = app.listen(8081, "10.167.91.39", () => {
-
-    console.log("Server is running!")
-
-})
 
 
 // DELETE A NOTE
