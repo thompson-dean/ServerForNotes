@@ -6,19 +6,17 @@ var app = express()
 var Data = require("./noteSchema")
 
 //connect mongoose to mongoDB
-mongoose.connect("mongodb://localhost:27017/noteDB", {
-    useNewUrlParser: true, useUnifiedTopology: true
-});
+mongoose.connect("mongodb://root:example@localhost:27017/newBD?authSource=admin");
 
-mongoose.connection.once("open", () => {
-    console.log("Connected to database!")
-}).on("error", (error) => {
-console.log("Failed to connect " + error)
-})
+// mongoose.connection.once("open", () => {
+//     console.log("Connected to database!")
+// }).on("error", (error) => {
+// console.log("Failed to connect " + error)
+// })
 
 //http://192.168.0.10:8081/create
 
-var server = app.listen(8081, "10.67.148.122", () => {
+var server = app.listen(8080, () => {
     console.log("Server is running!")
 })
 
@@ -41,6 +39,10 @@ app.post("/create", (req, res) => {
         }
     })
 })
+
+app.get("/", (req, res) => { 
+    res.send("OK")
+}) 
 
 
 
