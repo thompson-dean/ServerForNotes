@@ -18,7 +18,7 @@ console.log("Failed to connect " + error)
 
 //http://192.168.0.10:8081/create
 
-var server = app.listen(8081, "192.168.0.10", () => {
+var server = app.listen(8081, "10.67.148.122", () => {
     console.log("Server is running!")
 })
 
