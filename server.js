@@ -40,6 +40,10 @@ app.post("/create", (req, res) => {
     })
 })
 
+app.post("/delete", (req, res) => {
+
+})
+
 app.get("/", (req, res) => { 
     res.send("OK")
 }) 
